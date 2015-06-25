@@ -1,0 +1,46 @@
+
+{% extends "layout.html" %}
+{% block content %}
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+
+  <h1>Server Manager</h1>
+
+  <p>Selected Server: <strong> {{ info['alias'] }} </strong></p>
+  <p>Ip Address: <i>{{ info['ip'] }}</i></p>
+  <p><i>{{ info['system'] }}</i></p>
+  <p><a href="https://github.com/sloria/cookiecutter-flask" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+</div><!-- /.jumbotron -->
+
+<div class="body-content">
+  <div class="row">
+    <div class="col-lg-3">
+      <h2><i class="fa fa-code"></i> Disk Info</h2>
+      <p>{{ info['disk'] }}</p>
+      <p><a class="btn btn-default" href="http://getbootstrap.com/">Official website &raquo;</a></p>
+    </div>
+    <div class="col-lg-3">
+      <h2><i class="fa fa-flask"></i> Running Processes</h2>
+        {% for item in info['processes'] %}
+      <p> {{ item }}</p>
+        {% endfor %}
+      <p><a href="http://www.sqlalchemy.org/" class="btn btn-default" href="#">Official website &raquo;</a></p>
+   </div>
+    <div class="col-lg-3">
+      <h2><i class="fa fa-edit"></i> Memory Stats</h2>
+        {% for key,item in info['mem'].iteritems() %}
+      <p> {{ key }} : {{ item }}</p>
+        {% endfor %}
+      <p><a href="http://wtforms.simplecodes.com/" class="btn btn-default" href="#">Official website &raquo;</a></p>
+    </div>
+    <div class="col-lg-3">
+      <h2><i class="fa fa-edit"></i> CPU Stats</h2>
+        {% for key,item in info['cpu'].iteritems() %}
+      <p> {{ key }} : {{ item }}</p>
+        {% endfor %}
+      <p><a href="http://wtforms.simplecodes.com/" class="btn btn-default" href="#">Official website &raquo;</a></p>
+    </div>
+  </div><!-- /.row -->
+</div>
+{% endblock %}
+
